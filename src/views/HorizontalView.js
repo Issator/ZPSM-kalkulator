@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import MyButton from "../components/myButton";
-import FunButton from "../components/funButton";
 import { evaluate } from "mathjs";
 
 class HorizontalView extends Component {
@@ -22,7 +21,7 @@ class HorizontalView extends Component {
         break;
       }
       case "C": {
-        if (this.state.toCalcNum.length != undefined) {
+        if (this.state.toCalcNum.length !== undefined) {
           newVal = this.state.toCalcNum.slice(0, -1);
         }
         break;
@@ -56,79 +55,49 @@ class HorizontalView extends Component {
           <Text style={styles.texts}>{this.state.toCalcNum}</Text>
         </View>
 
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: "gray",
-            flexDirection: "row"
-          }}
-        >
+        <View style={styles.styleView}>
           <MyButton val="(" onPress={() => this.onPress("(")} />
           <MyButton val=")" onPress={() => this.onPress(")")} />
           <MyButton val="AC" onPress={() => this.onPress("AC")} />
           <MyButton val="C" onPress={() => this.onPress("C")} />
           <MyButton val="%" onPress={() => this.onPress("%")} />
-          <FunButton val="/" onPress={() => this.onPress("/")} />
+          <MyButton val="/" onPress={() => this.onPress("/")} color="#fcba03" />
         </View>
 
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: "gray",
-            flexDirection: "row"
-          }}
-        >
+        <View style={styles.styleView}>
           <MyButton val="^2" onPress={() => this.onPress("^2")} />
           <MyButton val="^3" onPress={() => this.onPress("^3")} />
           <MyButton val="7" onPress={() => this.onPress("7")} />
           <MyButton val="8" onPress={() => this.onPress("8")} />
           <MyButton val="9" onPress={() => this.onPress("9")} />
-          <FunButton val="X" onPress={() => this.onPress("*")} />
+          <MyButton val="X" onPress={() => this.onPress("*")} color="#fcba03" />
         </View>
 
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: "gray",
-            flexDirection: "row"
-          }}
-        >
+        <View style={styles.styleView}>
           <MyButton val="sqrt" onPress={() => this.onPress("sqrt(")} />
           <MyButton val="log" onPress={() => this.onPress("log(")} />
           <MyButton val="4" onPress={() => this.onPress("4")} />
           <MyButton val="5" onPress={() => this.onPress("5")} />
           <MyButton val="6" onPress={() => this.onPress("6")} />
-          <FunButton val="-" onPress={() => this.onPress("-")} />
+          <MyButton val="-" onPress={() => this.onPress("-")} color="#fcba03" />
         </View>
 
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: "gray",
-            flexDirection: "row"
-          }}
-        >
+        <View style={styles.styleView}>
           <MyButton val="e" onPress={() => this.onPress("e")} />
           <MyButton val="pi" onPress={() => this.onPress("pi")} />
           <MyButton val="1" onPress={() => this.onPress("1")} />
           <MyButton val="2" onPress={() => this.onPress("2")} />
           <MyButton val="3" onPress={() => this.onPress("3")} />
-          <FunButton val="+" onPress={() => this.onPress("+")} />
+          <MyButton val="+" onPress={() => this.onPress("+")} color="#fcba03" />
         </View>
 
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: "gray",
-            flexDirection: "row"
-          }}
-        >
+        <View style={styles.styleView}>
           <MyButton val="!" onPress={() => this.onPress("!")} />
           <MyButton val="+/-" onPress={() => this.onPress("^")} />
           <MyButton val="0" onPress={() => this.onPress("0")} />
           <MyButton val="" />
           <MyButton val="." onPress={() => this.onPress(".")} />
-          <FunButton val="=" onPress={() => this.onPress("=")} />
+          <MyButton val="=" onPress={() => this.onPress("=")} color="#fcba03" />
         </View>
       </View>
     );
@@ -144,6 +113,11 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
     textAlign: "right",
     fontSize: 70
+  },
+  styleView: {
+    flex: 1,
+    backgroundColor: "gray",
+    flexDirection: "row"
   }
 });
 

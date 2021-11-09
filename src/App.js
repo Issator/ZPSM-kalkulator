@@ -2,11 +2,17 @@ import React, { Component } from "react";
 import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
 import PortraitView from "./views/PortraitView";
 import HorizontalView from "./views/HorizontalView";
+import MainService from "./mainService";
+import SplashScreen from "./views/SplashScreen";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { switched: false };
+    this.state = {
+      switched: false,
+      loaded: false
+    };
+    MainService.load((v) => this.setState({ loaded: true }));
   }
 
   changeView() {
@@ -22,7 +28,7 @@ class App extends Component {
       view = <PortraitView />;
     }
 
-    return (
+    return this.state.loaded ? (
       <View style={[styles.container]}>
         <TouchableOpacity
           style={[styles.button]}
@@ -32,6 +38,8 @@ class App extends Component {
         </TouchableOpacity>
         {view}
       </View>
+    ) : (
+      <SplashScreen />
     );
   }
 }
