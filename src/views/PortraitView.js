@@ -1,18 +1,11 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import MyButton from "../components/myButton";
+import { evaluate } from "mathjs";
 
 class PortraitView extends Component {
   state = {
     toCalcNum: ""
-  };
-
-  evil = (fn) => {
-    try {
-      return new Function("return " + fn)();
-    } catch (e) {
-      console.log("złe Dane");
-    }
   };
 
   onPress = (value) => {
@@ -24,12 +17,7 @@ class PortraitView extends Component {
         break;
       }
       case "=": {
-        var valTest = this.evil(this.state.toCalcNum);
-        if (valTest !== undefined) {
-          newVal = valTest;
-        } else {
-          console.log("złe Dane");
-        }
+        newVal = evaluate(this.state.toCalcNum);
         break;
       }
       default: {
